@@ -2,8 +2,9 @@ const mealsEL = document.getElementById("meals");
 const favoriteContainer = document.getElementById("fav_meals");
 const searchTerm = document.getElementById("search-term");
 const serachBtn = document.getElementById("search");
-
-
+const closeInfo = document.getElementById("container-info");
+const closeBtn = document.getElementById("close-info");
+const mealInfo = document.getElementById("meal-info-title");
 getRandomMeal();
 fetchFavMeals();
 
@@ -37,6 +38,7 @@ async function getMealBySearch(term) {
 
 
 function addMeal(mealData, random) {
+    console.log(mealData);
     const meal = document.createElement("div");
     meal.classList.add("meal");
 
@@ -68,7 +70,10 @@ function addMeal(mealData, random) {
 
         fetchFavMeals();
         });
-
+    
+    meal.addEventListener("click", () => {
+        showMealInfo(mealData);
+    })
         mealsEL.appendChild(meal);
 }
 
@@ -123,6 +128,21 @@ function addMealToFav(mealData) {
 
     favoriteContainer.appendChild(favMeal);        
 }
+// show the  info
+function showMealInfo(mealData){
+    // clean it up
+    mealInfo.innerHTML = '';
+
+    const mealEL = document.createElement("div");
+
+    mealEL.innerHTML = `    <h1>Title</h1>
+    <img src="${mealData.strMealThumb}" alt="">                
+    <p>${mealData.strInstructions}
+    </p>
+    `
+    mealInfo.appendChild(mealEL);
+    closeInfo.classList.remove('hidden');
+}
 
 serachBtn.addEventListener("click", async () => {
     // clean the container
@@ -135,4 +155,7 @@ const meals = await getMealBySearch(search);
         addMeal(meal);
         });
     }
-})
+});
+closeBtn.addEventListener('click', () => {
+    closeInfo.classList.add('hidden')
+});

@@ -156,44 +156,47 @@ header button {
     color: rgb(202, 8, 8);
 }
 
-.popup-container {
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+
+.meal-info-container{
     position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
 }
 
-.popup-container.hidden {
+.meal-info-container.hidden{
     opacity: 0;
     pointer-events: none;
 }
 
-.popup {
+.meal-info{
     background-color: #fff;
     border-radius: 5px;
     padding: 0 2rem;
-    position: relative;
-    overflow: auto;
-    max-height: 100vh;
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
+
+}
+.meal-info h1{
+    text-align: center;
+}
+.meal-info img{
+    max-width: 100%;
 }
 
-.popup .close-popup {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5rem;
+.close-info{
     position: absolute;
     top: 1rem;
     right: 1rem;
-}
-
-.meal-info h1 {
-    text-align: center;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
 }
